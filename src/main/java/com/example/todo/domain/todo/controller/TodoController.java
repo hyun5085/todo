@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.todo.domain.todo.dto.request.CreateTodoRequestDto;
 import com.example.todo.domain.todo.dto.request.UpdateTodoRequestDto;
 import com.example.todo.domain.todo.dto.response.CreateTodoResponseDto;
+import com.example.todo.domain.todo.dto.response.FindAllTodoResponseDto;
+import com.example.todo.domain.todo.dto.response.FindByTodoResponseDto;
 import com.example.todo.domain.todo.dto.response.UpdateTodoResponseDto;
 import com.example.todo.domain.todo.service.TodoService;
 
@@ -38,14 +40,14 @@ public class TodoController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<UpdateTodoResponseDto>> findAllTodo(){
-		List<UpdateTodoResponseDto> updateTodoResponseDtoList = todoService.findAllTodos();
-		return ResponseEntity.ok(updateTodoResponseDtoList);
+	public ResponseEntity<List<FindAllTodoResponseDto>> findAllTodo(){
+		List<FindAllTodoResponseDto> findAllTodoResponseDtoList = todoService.findAllTodos();
+		return ResponseEntity.ok(findAllTodoResponseDtoList);
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<UpdateTodoResponseDto> findById(@PathVariable Long id){
-		UpdateTodoResponseDto findTodo = todoService.findById(id);
+	public ResponseEntity<FindByTodoResponseDto> findById(@PathVariable Long id){
+		FindByTodoResponseDto findTodo = todoService.findById(id);
 		return ResponseEntity.ok(findTodo);
 	}
 
